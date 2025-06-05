@@ -16,9 +16,9 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue); // à chaque changement, on passe la nouvelle valeur au parent
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(true); // on ferme la collapse de toute façon, y compris au clic sur "Toutes"
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">

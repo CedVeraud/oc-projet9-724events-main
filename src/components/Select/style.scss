@@ -19,6 +19,8 @@
   }
   margin-bottom: 16px;
 }
+// OPTIMISATION DE L'EXPERIENCE UTILISATEUR
+// gestion du click sur le collapse entier
 .Select {
   background-color: white;
   border-radius: 4px;
@@ -41,6 +43,10 @@
       min-height: 32px;
       margin: 0;
       text-transform: capitalize;
+      cursor: pointer;
+      &:hover {
+        color: #5B32FF;
+      }
     }
   }
   input {
@@ -51,12 +57,20 @@
   }
   button {
     border: none;
-    background: none;
-    height: 32px;
-    margin-top: 16px;
-    margin-right: 8px;
-    &.close {
+    background: none;  position: absolute;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    &.close svg {      
+      position: absolute;
       transform: rotate(180deg);
+    }
+    svg {
+      position: absolute;
+      right: 12px;
+      top: 27px;
     }
   }
   .SelectTitle {

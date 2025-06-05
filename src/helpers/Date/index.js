@@ -1,3 +1,4 @@
+// réorganisation du tableau : débute à 0
 export const MONTHS = {
   0: "janvier",
   1: "février",
