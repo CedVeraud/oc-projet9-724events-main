@@ -30,13 +30,19 @@ export const DataProvider = ({ children }) => {
     if (data) return;
     getData();
   });
-  
+  // on affiche les événements dans l'ordre croissant
+  const lastEvent = data?.events?.sort((evtA, evtB) =>
+    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+  );
+  // on récupère le dernier événement (total -1)
+  const last = lastEvent?.[data.events.length -1];
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         data,
         error,
+        last,
       }}
     >
       {children}
