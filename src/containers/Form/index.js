@@ -16,6 +16,9 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
+        // la fonction onSuccess() est appelée quand mockContactApi est ok
+        // elle ouvre la modale du message de confirmation d'envoi
+        onSuccess(true)
       } catch (err) {
         setSending(false);
         onError(err);
@@ -30,13 +33,20 @@ const Form = ({ onSuccess, onError }) => {
           <Field placeholder="" label="Nom" />
           <Field placeholder="" label="Prénom" />
           <Select
-            selection={["Personel", "Entreprise"]}
+            // correction de la coquille "PersoNel"
+            // correction également appliquée sur les fichiers de test
+            selection={["Personnel", "Entreprise"]}
             onChange={() => null}
-            label="Personel / Entreprise"
+            label="Personnel / Entreprise"
             type="large"
             titleEmpty
           />
-          <Field placeholder="" label="Email" />
+          <Field 
+            // champ de type "email"
+            placeholder="" 
+            label="Email" 
+            type={FIELD_TYPES.INPUT_EMAIL}
+          />
           <Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
             {sending ? "En cours" : "Envoyer"}
           </Button>
@@ -56,11 +66,11 @@ const Form = ({ onSuccess, onError }) => {
 Form.propTypes = {
   onError: PropTypes.func,
   onSuccess: PropTypes.func,
-}
+};
 
 Form.defaultProps = {
   onError: () => null,
   onSuccess: () => null,
-}
+};
 
 export default Form;
