@@ -30,12 +30,13 @@ export const DataProvider = ({ children }) => {
     if (data) return;
     getData();
   });
-  // on affiche les événements dans l'ordre croissant
+  // on affiche les événements dans l'ordre décroissant
   const lastEvent = data?.events?.sort((evtA, evtB) =>
-    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+    new Date(evtA.date) < new Date(evtB.date) ? 1 : -1
   );
-  // on récupère le dernier événement (total -1)
-  const last = lastEvent?.[data.events.length -1];
+  // on récupère le dernier événement en date
+  // soit le premier objet du tableau
+  const last = lastEvent?.[0];
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
