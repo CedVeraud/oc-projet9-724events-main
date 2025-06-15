@@ -53,6 +53,17 @@ describe("When a field is created", () => {
     });
   });
 
+  describe("and its type is set to FIELD_TYPES.EMAIL", () => {
+    it("a email input area with restictions pattern is rendered", () => {
+      window.console.error = jest.fn().mockImplementation(() => null); // disable propTypes warning
+      render(<Field type={FIELD_TYPES.INPUT_EMAIL} name="test" />);
+      const fieldElement = screen.getByTestId("field-testid");
+      expect(fieldElement.type).toEqual("email");
+      expect(fieldElement.pattern).toEqual("[A-Za-z0-9._+\\-\\']+@[A-Za-z0-9.\\-]+\\.[A-Za-z]{2,}$");
+
+    });
+  });
+
   describe("and its type is set to a wrong value", () => {
     it("a text input is rendered", () => {
       window.console.error = jest.fn().mockImplementation(() => null); // disable propTypes warning
