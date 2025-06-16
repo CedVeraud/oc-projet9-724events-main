@@ -118,7 +118,7 @@ const Page = (event) => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3> 
           { last &&  ( 
-            <Modal key={event} Content={<ModalEvent event={last} />}>    
+            <Modal key={event} Content={<ModalEvent event={last} />} >    
               {({ setIsOpened }) => ( 
                 <EventCard
                   onClick={() => setIsOpened(true)}
